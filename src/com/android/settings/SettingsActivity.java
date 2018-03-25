@@ -259,6 +259,8 @@ public class SettingsActivity extends SettingsDrawerActivity
             Settings.AccessibilitySettingsActivity.class.getName(),
             Settings.PrintSettingsActivity.class.getName(),
             Settings.PaymentSettingsActivity.class.getName(),
+            //antitheft_settings
+            Settings.DeviceInfoSettingsActivity.class.getName()
     };
 
     private static final String[] ENTRY_FRAGMENTS = {
@@ -551,7 +553,7 @@ public class SettingsActivity extends SettingsDrawerActivity
                 || className.equals(Settings.WirelessSettings.class.getName())
                 || className.equals(Settings.DeviceSettings.class.getName())
                 || className.equals(Settings.PersonalSettings.class.getName())
-                || className.equals(Settings.WirelessSettings.class.getName());
+                || className.equals(Settings.SystemSettings.class.getName());
 
         // This is a "Sub Settings" when:
         // - this is a real SubSettings

@@ -159,6 +159,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".antitheft.AntiTheftSettings"
+            android:label="@string/header_category_antitheft">
+            <intent-filter android:priority="1">
+                <action android:name="com.android.settings.category.system" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <receiver android:name="SettingsInitialize">
             <intent-filter>
                 <action android:name="android.intent.action.USER_INITIALIZE"/>

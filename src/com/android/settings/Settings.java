@@ -19,6 +19,7 @@ package com.android.settings;
 import com.android.settings.applications.AppOpsSummary;
 import com.android.settings.fingerprint.FingerprintEnrollIntroduction;
 import com.android.settings.fingerprint.FingerprintSettings;
+import com.android.settings.antitheft.AntiTheftSettings;
 
 /**
  * Top-level Settings activity
@@ -159,4 +160,5 @@ public class Settings extends SettingsActivity {
     public static class DeviceSettings extends SettingsActivity { /* empty */ }
     public static class PersonalSettings extends SettingsActivity { /* empty */ }
     public static class SystemSettings extends SettingsActivity { /* empty */ }
+    public static class AntiTheftSettings extends SettingsActivity { /* empty */ }
 }
