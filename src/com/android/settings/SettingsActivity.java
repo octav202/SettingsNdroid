@@ -260,7 +260,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             Settings.PrintSettingsActivity.class.getName(),
             Settings.PaymentSettingsActivity.class.getName(),
             //antitheft_settings
-            Settings.DeviceInfoSettingsActivity.class.getName()
+            Settings.AntiTheftSettingsActivity.class.getName()
     };
 
     private static final String[] ENTRY_FRAGMENTS = {

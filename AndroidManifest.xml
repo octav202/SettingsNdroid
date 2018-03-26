@@ -159,13 +159,37 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".antitheft.AntiTheftSettings"
+        <!-- Anti Theft Settings -->
+        <activity android:name=".Settings$AntiTheftSettings"
             android:label="@string/header_category_antitheft">
             <intent-filter android:priority="1">
-                <action android:name="com.android.settings.category.system" />
+                <action android:name="com.android.settings.category.antitheft" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity android:name="Settings$AntiTheftSettingsActivity"
+            android:label="@string/antitheft_settings_title"
+            android:icon="@drawable/ic_settings_security"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:taskAffinity=""
+            android:parentActivityName="Settings">
+            <intent-filter android:priority="1">
+                <action android:name="android.settings.SECURITY_SETTINGS" />
+                <action android:name="android.credentials.UNLOCK" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:priority="2">
+                <action android:name="com.android.settings.action.SETTINGS" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.category"
+                android:value="com.android.settings.category.antitheft" />
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.SecuritySettings" />
+            <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
+                android:value="true" />
+        </activity>
+        <!-- ######################## -->
 
         <receiver android:name="SettingsInitialize">
             <intent-filter>
