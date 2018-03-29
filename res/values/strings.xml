@@ -57,8 +57,24 @@
     <!-- Settings main menu category heading. System (Updates, data, accessibility, about phone). [CHAR LIMIT=40] -->
     <string name="header_category_system">System</string>
     <!-- Settings main menu category heading. Antitheft (). [CHAR LIMIT=40] -->
-    <string name="header_category_antitheft">Antitheft</string>
+
+
+    <!-- Anti Theft-->
+    <string name="header_category_antitheft">Anti Theft</string>
     <string name="antitheft_settings_title">Anti Theft Settings</string>
+    <string name="at_key_enabled">enabled</string>
+    <string name="at_key_enabled_title">Enabled</string>
+    <string name="at_key_server">server</string>
+    <string name="at_key_server_title">Server</string>
+    <string name="at_key_check_freq">check_frequency</string>
+    <string name="at_key_check_freq_title">Anti Theft Check Frequency (minutes)</string>
+    <string name="at_key_location_freq">location_frequency</string>
+    <string name="at_key_location_freq_title">Location Update Frequency (minutes)</string>
+    <string name="at_key_device_id">device_id</string>
+    <string name="at_key_device_id_title">Device ID</string>
+    <string name="at_key_device_pass">device_pass</string>
+    <string name="at_key_device_pass_title">Device Password</string>
+
 
     <!-- Data Connection Enable. Only shown in diagnostic screen, so precise translation is not needed. -->
     <string name="radio_info_data_connection_enable">Enable Data Connection</string>
