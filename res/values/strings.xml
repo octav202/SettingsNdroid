@@ -62,16 +62,22 @@
     <!-- Anti Theft-->
     <string name="header_category_antitheft">Anti Theft</string>
     <string name="antitheft_settings_title">Anti Theft Settings</string>
-    <string name="at_key_enabled">enabled</string>
-    <string name="at_key_enabled_title">Enabled</string>
-    <string name="at_key_server">server</string>
-    <string name="at_key_server_title">Server</string>
-    <string name="at_key_check_freq">check_frequency</string>
-    <string name="at_key_check_freq_title">Anti Theft Check Frequency (minutes)</string>
-    <string name="at_key_location_freq">location_frequency</string>
-    <string name="at_key_location_freq_title">Location Update Frequency (minutes)</string>
+
+    <string name="at_key_status">status</string>
+    <string name="at_key_status_title">Status</string>
+
+    <string name="at_key_ip">ip</string>
+    <string name="at_key_ip_title">IP Address</string>
+
+    <string name="at_key_frequency">frequency</string>
+    <string name="at_key_frequency_title">Anti Theft Check Frequency (sec.)</string>
+
     <string name="at_key_device_id">device_id</string>
     <string name="at_key_device_id_title">Device ID</string>
+
+    <string name="at_key_device_name">device_name</string>
+    <string name="at_key_device_name_title">Device Name</string>
+
     <string name="at_key_device_pass">device_pass</string>
     <string name="at_key_device_pass_title">Device Password</string>
 

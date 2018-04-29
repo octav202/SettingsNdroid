@@ -20,37 +20,38 @@
     <!-- Enabled -->
     <SwitchPreference
         android:defaultValue="true"
-        android:key="@string/at_key_enabled"
-        android:title="@string/at_key_enabled_title" />
+        android:key="@string/at_key_status"
+        android:title="@string/at_key_status_title" />
 
-    <!-- Server -->
+    <!-- IP Address -->
     <EditTextPreference
-        android:key="@string/at_key_server"
-        android:summary="localhost"
-        android:title="@string/at_key_server_title" />
+        android:key="@string/at_key_ip"
+        android:summary=""
+        android:title="@string/at_key_ip_title" />
 
-    <!-- Anti theft check frequency -->
+    <!-- AntiTheft Frequency -->
     <EditTextPreference
-        android:key="@string/at_key_check_freq"
-        android:summary="1"
-        android:title="@string/at_key_check_freq_title" />
+        android:key="@string/at_key_frequency"
+        android:summary=""
+        android:title="@string/at_key_frequency_title" />
 
-    <!-- Location Frequency -->
-    <EditTextPreference
-        android:key="location_frequency"
-        android:summary="1"
-        android:title="@string/at_key_location_freq_title" />
 
     <!-- Device ID -->
     <EditTextPreference
         android:key="@string/at_key_device_id"
-        android:summary="id"
+        android:summary=""
         android:title="@string/at_key_device_id_title" />
+
+    <!-- Device Name -->
+    <EditTextPreference
+        android:key="@string/at_key_device_name"
+        android:summary=""
+        android:title="@string/at_key_device_name_title" />
 
     <!-- Device Password -->
     <EditTextPreference
         android:key="@string/at_key_device_pass"
-        android:summary="password"
+        android:summary=""
         android:title="@string/at_key_device_pass_title" />
 
 

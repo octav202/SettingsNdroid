@@ -17,32 +17,32 @@
 package com.android.settings.antitheft;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.EditTextPreference;
 import android.support.v7.preference.Preference;
+import android.util.Log;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.ndroid.atmanager.AntiTheftManager;
 
 public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
-    private static final String TAG = "AT_Settings";
+    private static final String TAG = "AT_SettingsFragment";
 
-    public static final String KEY_ENABLED = "enabled";
-    public static final String KEY_SERVER = "server";
-    public static final String KEY_CHECK_FREQUENCY = "check_frequency";
-    public static final String KEY_LOCATION_FREQUENCY = "location_frequency";
+    public static final String KEY_STATUS = "status";
+    public static final String KEY_IP = "ip";
+    public static final String KEY_CHECK_FREQUENCY = "frequency";
     public static final String KEY_DEVICE_ID = "device_id";
+    public static final String KEY_DEVICE_NAME = "device_name";
     public static final String KEY_DEVICE_PASS = "device_pass";
 
-    SwitchPreference mEnabledPreference;
-    EditTextPreference mServerPreference;
-    EditTextPreference mCheckFreqPreference;
-    EditTextPreference mLocationFreqPreference;
+    SwitchPreference mStatusPreference;
+    EditTextPreference mIpAddressPreference;
+    EditTextPreference mFrequencyPreference;
     EditTextPreference mDeviceIdPreference;
+    EditTextPreference mDeviceNamePreference;
     EditTextPreference mDevicePassPreference;
 
     @Override
@@ -59,19 +59,16 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mEnabledPreference = (SwitchPreference) findPreference(KEY_ENABLED);
-        mServerPreference = (EditTextPreference) findPreference(KEY_SERVER);
-        mCheckFreqPreference = (EditTextPreference) findPreference(KEY_CHECK_FREQUENCY);
-        mLocationFreqPreference = (EditTextPreference) findPreference(KEY_LOCATION_FREQUENCY);
+        mStatusPreference = (SwitchPreference) findPreference(KEY_STATUS);
+        mIpAddressPreference = (EditTextPreference) findPreference(KEY_IP);
+        mFrequencyPreference = (EditTextPreference) findPreference(KEY_CHECK_FREQUENCY);
         mDeviceIdPreference = (EditTextPreference) findPreference(KEY_DEVICE_ID);
+        mDeviceNamePreference = (EditTextPreference) findPreference(KEY_DEVICE_NAME);
         mDevicePassPreference = (EditTextPreference) findPreference(KEY_DEVICE_PASS);
 
-        mEnabledPreference.setOnPreferenceChangeListener(mPreferenceListener);
-        mServerPreference.setOnPreferenceChangeListener(mPreferenceListener);
-        mCheckFreqPreference.setOnPreferenceChangeListener(mPreferenceListener);
-        mLocationFreqPreference.setOnPreferenceChangeListener(mPreferenceListener);
-        mDeviceIdPreference.setOnPreferenceChangeListener(mPreferenceListener);
-        mDevicePassPreference.setOnPreferenceChangeListener(mPreferenceListener);
+        setPreferenceValues();
+
+        setListeners();
     }
 
     @Override
@@ -102,26 +99,69 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
 
     }
 
-    private Preference.OnPreferenceChangeListener mPreferenceListener = new Preference.OnPreferenceChangeListener() {
-        @Override
-        public boolean onPreferenceChange(Preference preference, Object newValue) {
-            if (preference instanceof EditTextPreference) {
-                String text = (String) newValue;
-                preference.setSummary(text);
-            } else if (preference instanceof SwitchPreference) {
-                boolean checked = (Boolean) newValue;
-                ((SwitchPreference) preference).setChecked(checked);
-                setAllPreferencesEnabled(checked);
-            }
-            return true;
-        }
-    };
+    private void setPreferenceValues() {
+        boolean status = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getAntiTheftStatus();
+        mStatusPreference.setChecked(status);
 
-    private void setAllPreferencesEnabled(boolean status) {
-        mServerPreference.setEnabled(status);
-        mCheckFreqPreference.setEnabled(status);
-        mLocationFreqPreference.setEnabled(status);
-        mDeviceIdPreference.setEnabled(status);
-        mDevicePassPreference.setEnabled(status);
+        String ip = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getIpAddress();
+        mIpAddressPreference.setSummary(ip);
+
+        Integer freq = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getAtFrequency();
+        mFrequencyPreference.setSummary(freq.toString());
+
+        Integer id = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getDeviceId();
+        mDeviceIdPreference.setSummary(id.toString());
+
+        String name = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getDeviceName();
+        mDeviceNamePreference.setSummary(name);
+
+        String pass = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getDevicePass();
+        mDevicePassPreference.setSummary(pass);
     }
+
+    private void setListeners() {
+        mStatusPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if (preference instanceof SwitchPreference) {
+                    boolean checked = (Boolean) newValue;
+                    //((SwitchPreference) preference).setChecked(checked);
+                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).setAntiTheftStatus(checked);
+                }
+                return true;
+            }
+        });
+
+        mIpAddressPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if (preference instanceof EditTextPreference) {
+                    String text = (String) newValue;
+                    preference.setSummary(text);
+                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).setIpAddress(text);
+                }
+                return true;
+            }
+        });
+
+        mFrequencyPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if (preference instanceof EditTextPreference) {
+                    String text = (String) newValue;
+                    preference.setSummary(text);
+                    Integer frequency = Integer.parseInt(text);
+                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).setAtFrequency(frequency);
+                }
+                return true;
+            }
+        });
+
+        mDeviceIdPreference.setEnabled(false);
+        mDeviceNamePreference.setEnabled(false);
+        mDevicePassPreference.setEnabled(false);
+    }
+
+
+
 }
