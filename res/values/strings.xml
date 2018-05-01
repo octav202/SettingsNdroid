@@ -81,6 +81,28 @@
     <string name="at_key_device_pass">device_pass</string>
     <string name="at_key_device_pass_title">Device Password</string>
 
+    <string name="device_name">Device Name :</string>
+    <string name="pass">Password : </string>
+    <string name="register">Register Device</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Device Functions - Simulate -->
+    <string name="at_key_lock">lock_device</string>
+    <string name="at_key_lock_title">Lock Device</string>
+
+    <string name="at_key_ring">ring_device</string>
+    <string name="at_key_ring_title">Ring Device</string>
+
+    <string name="at_key_reboot">reboot_device</string>
+    <string name="at_key_reboot_title">Reboot Device</string>
+
+    <string name="at_key_encrypt">encrypt_device</string>
+    <string name="at_key_encrypt_title">Encrypt Device</string>
+
+    <string name="at_key_wipe">wipe_device</string>
+    <string name="at_key_wipe_title">Wipe Device</string>
+
 
     <!-- Data Connection Enable. Only shown in diagnostic screen, so precise translation is not needed. -->
     <string name="radio_info_data_connection_enable">Enable Data Connection</string>

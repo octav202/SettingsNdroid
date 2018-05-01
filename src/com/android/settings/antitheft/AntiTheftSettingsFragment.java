@@ -16,12 +16,18 @@
 
 package com.android.settings.antitheft;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.EditTextPreference;
 import android.support.v7.preference.Preference;
-import android.util.Log;
+import android.text.InputType;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
@@ -45,6 +51,19 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
     EditTextPreference mDeviceNamePreference;
     EditTextPreference mDevicePassPreference;
 
+    // Device Functions - Simulations
+    public static final String KEY_LOCK = "lock_device";
+    public static final String KEY_RING = "ring_device";
+    public static final String KEY_REBOOT = "reboot_device";
+    public static final String KEY_WIPE = "wipe_device";
+    public static final String KEY_ENCRYPT = "encrypt_device";
+
+    SwitchPreference mLockPreference;
+    SwitchPreference mRingPreference;
+    SwitchPreference mRebootPreference;
+    SwitchPreference mWipePreference;
+    SwitchPreference mEncryptPreference;
+
     @Override
     protected int getMetricsCategory() {
         return MetricsEvent.SOUND;
@@ -65,6 +84,12 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
         mDeviceIdPreference = (EditTextPreference) findPreference(KEY_DEVICE_ID);
         mDeviceNamePreference = (EditTextPreference) findPreference(KEY_DEVICE_NAME);
         mDevicePassPreference = (EditTextPreference) findPreference(KEY_DEVICE_PASS);
+
+        mLockPreference = (SwitchPreference) findPreference(KEY_LOCK);
+        mRingPreference = (SwitchPreference) findPreference(KEY_RING);
+        mRebootPreference = (SwitchPreference) findPreference(KEY_REBOOT);
+        mWipePreference = (SwitchPreference) findPreference(KEY_WIPE);
+        mEncryptPreference = (SwitchPreference) findPreference(KEY_ENCRYPT);
 
         setPreferenceValues();
 
@@ -160,8 +185,130 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
         mDeviceIdPreference.setEnabled(false);
         mDeviceNamePreference.setEnabled(false);
         mDevicePassPreference.setEnabled(false);
+
+        // Device Functions - Simulations
+        mLockPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if (preference instanceof SwitchPreference) {
+                    boolean checked = (Boolean) newValue;
+                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).lock(checked);
+                }
+                return true;
+            }
+        });
+        mRingPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if (preference instanceof SwitchPreference) {
+                    boolean checked = (Boolean) newValue;
+                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).ring(checked);
+                }
+                return true;
+            }
+        });
+        mRebootPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if (preference instanceof SwitchPreference) {
+                    boolean checked = (Boolean) newValue;
+                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).reboot(checked);
+                }
+                return true;
+            }
+        });
+        mWipePreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if (preference instanceof SwitchPreference) {
+                    boolean checked = (Boolean) newValue;
+                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).wipe(checked);
+                }
+                return true;
+            }
+        });
+        mEncryptPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if (preference instanceof SwitchPreference) {
+                    boolean checked = (Boolean) newValue;
+                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).encryptStorage(checked);
+                }
+                return true;
+            }
+        });
     }
 
+    /**
+     * Request user to register device.
+     */
+    private void showRegisterDialog() {
+        final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+        LinearLayout layout= new LinearLayout(getActivity());
+        layout.setOrientation(LinearLayout.VERTICAL);
+        final EditText nameInput = new EditText(getActivity());
+        nameInput.setHint(R.string.device_name);
+        final EditText passInput = new EditText(getActivity());
+        passInput.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        passInput.setHint(R.string.pass);
+        layout.addView(nameInput);
+        layout.addView(passInput);
+        alert.setView(layout);
+
+        alert.setTitle(R.string.register);
+
+        alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String name = nameInput.getText().toString().trim();
+                String pass = passInput.getText().toString().trim();
+                //registerDevice(name, pass);
+            }
+        });
+        alert.setNegativeButton(R.string.cancel,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.cancel();
+                    }
+                });
+        alert.create().show();
+    }
+
+    /**
+     * Register Device on server
+     * @param name
+     * @param pass
+     */
+//    private void registerDevice(final String name, final String pass) {
+//
+//        AntiTheftManager.getInstance(getActivity().getApplicationContext());
+//
+//        if (mService != null) {
+//            mService.registerDevice(name, pass, new AddDeviceTask.AddDeviceCallback() {
+//                @Override
+//                public void onStarted() {
+//                }
+//
+//                @Override
+//                public void onFinished(int id) {
+//                    if (id == 0) {
+//                        Log.e(TAG, "Registration failed!");
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                mStatusPreference.setChecked(false);
+//                            }
+//                        });
+//                        return;
+//                    }
+//
+//                    mDeviceIdPreference.setSummary(String.valueOf(id));
+//                    mDeviceNamePreference.setSummary(String.valueOf(name));
+//                    mDevicePassPreference.setSummary(String.valueOf(pass));
+//                }
+//            });
+//        }
+//
+//    }
 
 
 }

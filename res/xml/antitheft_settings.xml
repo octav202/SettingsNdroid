@@ -54,5 +54,31 @@
         android:summary=""
         android:title="@string/at_key_device_pass_title" />
 
+    <!-- Lock -->
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/at_key_lock"
+        android:title="@string/at_key_lock_title" />
+    <!-- Ring -->
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/at_key_ring"
+        android:title="@string/at_key_ring_title" />
+    <!-- Wipe -->
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/at_key_wipe"
+        android:title="@string/at_key_wipe_title" />
+    <!-- Encrypt Storage -->
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/at_key_encrypt"
+        android:title="@string/at_key_encrypt_title" />
+    <!-- Reboot -->
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/at_key_reboot"
+        android:title="@string/at_key_reboot_title" />
+
 
 </PreferenceScreen>
