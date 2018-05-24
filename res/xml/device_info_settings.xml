@@ -147,4 +147,30 @@
                 settings:allowDividerAbove="true"
                 settings:allowDividerBelow="true"/>
 
+        <!-- Ndroid -->
+
+        <!-- Build Name -->
+        <Preference
+            android:enabled="false"
+            android:key="rom_name"
+            android:shouldDisableView="false"
+            android:summary="@string/ndroid_build_name"
+            android:title="@string/ndroid_build_name_title" />
+
+        <!-- Powered By -->
+        <Preference
+            android:enabled="false"
+            android:key="rom_powered_by"
+            android:shouldDisableView="false"
+            android:summary="@string/powered_by"
+            android:title="@string/powered_by_title" />
+
+        <!-- Developed By -->
+        <Preference
+            android:enabled="false"
+            android:key="rom_developer"
+            android:shouldDisableView="false"
+            android:summary="@string/developed_by"
+            android:title="@string/developed_by_title" />
+
 </PreferenceScreen>

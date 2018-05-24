@@ -57,36 +57,6 @@
     <!-- Settings main menu category heading. System (Updates, data, accessibility, about phone). [CHAR LIMIT=40] -->
     <string name="header_category_system">System</string>
     <!-- Settings main menu category heading. Antitheft (). [CHAR LIMIT=40] -->
-
-
-    <!-- Anti Theft-->
-    <string name="header_category_antitheft">Anti Theft</string>
-    <string name="antitheft_settings_title">Anti Theft Settings</string>
-
-    <string name="at_key_status">status</string>
-    <string name="at_key_status_title">Status</string>
-
-    <string name="at_key_ip">ip</string>
-    <string name="at_key_ip_title">IP Address</string>
-
-    <string name="at_key_frequency">frequency</string>
-    <string name="at_key_frequency_title">Anti Theft Check Frequency (sec.)</string>
-
-    <string name="at_key_device_id">device_id</string>
-    <string name="at_key_device_id_title">Device ID</string>
-
-    <string name="at_key_device_name">device_name</string>
-    <string name="at_key_device_name_title">Device Name</string>
-
-    <string name="at_key_device_pass">device_pass</string>
-    <string name="at_key_device_pass_title">Device Password</string>
-
-    <string name="device_name">Device Name :</string>
-    <string name="pass">Password : </string>
-    <string name="register">Register Device</string>
-    <string name="ok">Ok</string>
-    <string name="cancel">Cancel</string>
-
     <!-- Device Functions - Simulate -->
     <string name="at_key_lock">lock_device</string>
     <string name="at_key_lock_title">Lock Device</string>
@@ -7932,5 +7902,44 @@
     <string name="carrier_provisioning">Carrier Provisioning Info</string>
     <!-- Trigger Carrier Provisioning [CHAR LIMIT=NONE] -->
     <string name="trigger_carrier_provisioning">Trigger Carrier Provisioning</string>
+
+    <!-- Ndroid -->
+    <string name="ndroid_build_name_title">Build Name</string>
+    <string name="ndroid_build_name">Ndroid 1.0</string>
+
+    <string name="powered_by_title">Powered By</string>
+    <string name="powered_by">Android Nougat 7.1.2</string>
+
+    <string name="developed_by_title">Developed By</string>
+    <string name="developed_by">Octavian Bostan</string>
+
+    <!-- Anti Theft-->
+    <string name="header_category_antitheft">Anti Theft</string>
+    <string name="antitheft_settings_title">Anti Theft Settings</string>
+
+    <string name="at_key_status">status</string>
+    <string name="at_key_status_title">Status</string>
+
+    <string name="at_key_ip">ip</string>
+    <string name="at_key_ip_title">IP Address</string>
+
+    <string name="at_key_frequency">frequency</string>
+    <string name="at_key_frequency_title">Anti Theft Check Frequency (sec.)</string>
+
+    <string name="at_key_device_id">device_id</string>
+    <string name="at_key_device_id_title">Device ID</string>
+
+    <string name="at_key_device_name">device_name</string>
+    <string name="at_key_device_name_title">Device Name</string>
+
+    <string name="at_key_device_pass">device_pass</string>
+    <string name="at_key_device_pass_title">Device Password</string>
+
+    <string name="device_name">Device Name :</string>
+    <string name="pass">Password : </string>
+    <string name="register">Register Device</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+
 
 </resources>

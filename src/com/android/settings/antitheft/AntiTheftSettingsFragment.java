@@ -32,7 +32,7 @@ import android.widget.LinearLayout;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.ndroid.atmanager.AntiTheftManager;
+//import com.ndroid.atmanager.AntiTheftManager;
 
 public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
     private static final String TAG = "AT_SettingsFragment";
@@ -125,23 +125,23 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
     }
 
     private void setPreferenceValues() {
-        boolean status = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getAntiTheftStatus();
-        mStatusPreference.setChecked(status);
-
-        String ip = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getIpAddress();
-        mIpAddressPreference.setSummary(ip);
-
-        Integer freq = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getAtFrequency();
-        mFrequencyPreference.setSummary(freq.toString());
-
-        Integer id = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getDeviceId();
-        mDeviceIdPreference.setSummary(id.toString());
-
-        String name = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getDeviceName();
-        mDeviceNamePreference.setSummary(name);
-
-        String pass = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getDevicePass();
-        mDevicePassPreference.setSummary(pass);
+//        boolean status = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getAntiTheftStatus();
+//        mStatusPreference.setChecked(status);
+//
+//        String ip = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getIpAddress();
+//        mIpAddressPreference.setSummary(ip);
+//
+//        Integer freq = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getAtFrequency();
+//        mFrequencyPreference.setSummary(freq.toString());
+//
+//        Integer id = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getDeviceId();
+//        mDeviceIdPreference.setSummary(id.toString());
+//
+//        String name = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getDeviceName();
+//        mDeviceNamePreference.setSummary(name);
+//
+//        String pass = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getDevicePass();
+//        mDevicePassPreference.setSummary(pass);
     }
 
     private void setListeners() {
@@ -151,7 +151,7 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
                 if (preference instanceof SwitchPreference) {
                     boolean checked = (Boolean) newValue;
                     //((SwitchPreference) preference).setChecked(checked);
-                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).setAntiTheftStatus(checked);
+//                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).setAntiTheftStatus(checked);
                 }
                 return true;
             }
@@ -163,7 +163,7 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
                 if (preference instanceof EditTextPreference) {
                     String text = (String) newValue;
                     preference.setSummary(text);
-                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).setIpAddress(text);
+//                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).setIpAddress(text);
                 }
                 return true;
             }
@@ -176,7 +176,7 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
                     String text = (String) newValue;
                     preference.setSummary(text);
                     Integer frequency = Integer.parseInt(text);
-                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).setAtFrequency(frequency);
+//                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).setAtFrequency(frequency);
                 }
                 return true;
             }
@@ -192,7 +192,7 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if (preference instanceof SwitchPreference) {
                     boolean checked = (Boolean) newValue;
-                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).lock(checked);
+//                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).lock(checked);
                 }
                 return true;
             }
@@ -202,7 +202,7 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if (preference instanceof SwitchPreference) {
                     boolean checked = (Boolean) newValue;
-                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).ring(checked);
+//                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).ring(checked);
                 }
                 return true;
             }
@@ -212,7 +212,7 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if (preference instanceof SwitchPreference) {
                     boolean checked = (Boolean) newValue;
-                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).reboot(checked);
+//                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).reboot(checked);
                 }
                 return true;
             }
@@ -222,7 +222,7 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if (preference instanceof SwitchPreference) {
                     boolean checked = (Boolean) newValue;
-                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).wipe(checked);
+//                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).wipe(checked);
                 }
                 return true;
             }
@@ -232,7 +232,7 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if (preference instanceof SwitchPreference) {
                     boolean checked = (Boolean) newValue;
-                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).encryptStorage(checked);
+//                    AntiTheftManager.getInstance(getActivity().getApplicationContext()).encryptStorage(checked);
                 }
                 return true;
             }
