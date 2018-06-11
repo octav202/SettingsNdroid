@@ -7917,6 +7917,22 @@
     <string name="header_category_antitheft">Anti Theft</string>
     <string name="antitheft_settings_title">Anti Theft Settings</string>
 
+    <string name="app_name">NdroidClient</string>
+    <string name="enabled">Enabled</string>
+    <string name="device_name">Device Name :</string>
+    <string name="pass">Password : </string>
+    <string name="device_id">Device Id : </string>
+    <string name="register">Register Device</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="ip_address">IP Address :</string>
+    <string name="at_frequency">Check frequency :</string>
+    <string name="device_admin_description">Device Admin Receiver</string>
+
+    <!-- Anti Theft-->
+    <string name="header_category_antitheft">Anti Theft</string>
+    <string name="antitheft_settings_title">Anti Theft Settings</string>
+
     <string name="at_key_status">status</string>
     <string name="at_key_status_title">Status</string>
 
@@ -7935,11 +7951,15 @@
     <string name="at_key_device_pass">device_pass</string>
     <string name="at_key_device_pass_title">Device Password</string>
 
-    <string name="device_name">Device Name :</string>
-    <string name="pass">Password : </string>
-    <string name="register">Register Device</string>
-    <string name="ok">Ok</string>
-    <string name="cancel">Cancel</string>
+    <string name="at_key_reset">reset</string>
+    <string name="at_key_reset_title">Reset</string>
+    <string name="at_key_reset_summary">Reset all settings.</string>
+    <string name="at_key_reset_warning">Warning. This will restore all settings to the default values.</string>
 
+    <!-- Dialog Alert -->
+    <string name="alert_title">Warning!</string>
+    <string name="alert_subtitle">This device is tracked!</string>
+    <string name="alert_info">If you have this device in your possession, please use the information below
+    to return it to its rightful owner.</string>
 
 </resources>

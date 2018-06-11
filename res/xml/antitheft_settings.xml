@@ -33,7 +33,8 @@
     <EditTextPreference
         android:key="@string/at_key_frequency"
         android:summary=""
-        android:title="@string/at_key_frequency_title" />
+        android:title="@string/at_key_frequency_title"
+        android:inputType="number"/>
 
 
     <!-- Device ID -->
@@ -52,33 +53,14 @@
     <EditTextPreference
         android:key="@string/at_key_device_pass"
         android:summary=""
-        android:title="@string/at_key_device_pass_title" />
+        android:title="@string/at_key_device_pass_title"
+        android:inputType="textPassword"/>
 
-    <!-- Lock -->
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="@string/at_key_lock"
-        android:title="@string/at_key_lock_title" />
-    <!-- Ring -->
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="@string/at_key_ring"
-        android:title="@string/at_key_ring_title" />
-    <!-- Wipe -->
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="@string/at_key_wipe"
-        android:title="@string/at_key_wipe_title" />
-    <!-- Encrypt Storage -->
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="@string/at_key_encrypt"
-        android:title="@string/at_key_encrypt_title" />
-    <!-- Reboot -->
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="@string/at_key_reboot"
-        android:title="@string/at_key_reboot_title" />
+    <!-- Reset -->
+    <Preference
+        android:key="@string/at_key_reset"
+        android:summary="@string/at_key_reset_summary"
+        android:title="@string/at_key_reset_title" />
 
 
 </PreferenceScreen>
