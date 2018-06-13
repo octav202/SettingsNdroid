@@ -39,8 +39,8 @@
 
     <color name="divider_color">#20ffffff</color>
     <color name="title_color">@android:color/holo_blue_light</color>
-    <color name="setup_divider_color_dark">#33ffffff</color>
-    <color name="setup_divider_color_light">#33000000</color>
+    <color name="setup_divider_color_dark">@color/divider</color>
+    <color name="setup_divider_color_light">@color/divider</color>
     <color name="setup_lock_pattern_view_regular_color_dark">#ffbdbdbd</color>
     <color name="setup_lock_pattern_view_regular_color_light">@color/lock_pattern_view_regular_color</color>
     <color name="setup_lock_pattern_view_success_color_dark">#ff84ffff</color>
@@ -69,7 +69,7 @@
     <color name="running_processes_system_ram">#ff384248</color>
     <color name="running_processes_free_ram">#ffced7db</color>
 
-    <color name="card_background">#fffafafa</color>
+    <color name="card_background">@color/windowBackground</color>
 
     <color name="wifi_divider">#ffe0e0e0</color>
     <color name="sim_noitification">@*android:color/material_deep_teal_500</color>
@@ -119,7 +119,7 @@
 
     <color name="usage_graph_dots">#B0BEC5</color>
 
-    <color name="card_background_grey">#eeeeee</color>
+    <color name="card_background_grey">@color/windowBackground</color>
 
     <!-- Gestures settings -->
     <color name="gestures_setting_background_color">#f5f5f5</color>
@@ -128,7 +128,7 @@
     <color name="colorPrimary">#009688</color>
     <color name="colorPrimaryDark">#00796B</color>
     <color name="lightPrimary">#B2DFDB</color>
-    <color name="colorAccent">#FF5722</color>
+    <color name="colorAccent">#009688</color>
     <color name="colorAccentTransparent">#66FF5722</color>
     <color name="transparent">#CC123456</color>
     <color name="white">#FFFFFF</color>
