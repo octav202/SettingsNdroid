@@ -111,6 +111,11 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
     private void setPreferenceValues() {
         boolean status = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getAntiTheftStatus();
         mStatusPreference.setChecked(status);
+        if (status) {
+            mStatusPreference.setSummary(R.string.enabled);
+        } else {
+            mStatusPreference.setSummary(R.string.disabled);
+        }
 
         String ip = AntiTheftManager.getInstance(getActivity().getApplicationContext()).getIpAddress();
         mIpAddressPreference.setSummary(ip);
@@ -155,6 +160,7 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
                             showRegisterDialog();
                         } else {
                             manager.setAntiTheftStatus(true);
+                            mStatusPreference.setSummary(R.string.enabled);
                         }
                     } else {
                         showAuthenticateDialog();
@@ -255,6 +261,7 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
                 mDeviceIdPreference.setSummary(String.valueOf(deviceId));
                 mDeviceNamePreference.setSummary(nameInput.toString());
                 mDevicePassPreference.setSummary(passInput.toString());
+                mStatusPreference.setSummary(R.string.enabled);
             }
         });
         alert.setNegativeButton(R.string.cancel,
@@ -287,15 +294,19 @@ public class AntiTheftSettingsFragment extends SettingsPreferenceFragment {
                 String pass = passInput.getText().toString().trim();
                 if (pass.equals(AntiTheftManager.getInstance(getActivity()).getDevicePass())) {
                     AntiTheftManager.getInstance(getActivity()).setAntiTheftStatus(false);
+                    mStatusPreference.setSummary(R.string.disabled);
                 } else {
                     Toast.makeText(getActivity(),"Authentication Failed", Toast.LENGTH_SHORT).show();
+                    mStatusPreference.setChecked(true);
+                    mStatusPreference.setSummary(R.string.enabled);
                 }
             }
         });
         alert.setNegativeButton(R.string.cancel,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        mStatusPreference.setChecked(false);
+                        mStatusPreference.setChecked(true);
+                        mStatusPreference.setSummary(R.string.enabled);
                         dialog.cancel();
                     }
                 });

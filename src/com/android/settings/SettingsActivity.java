@@ -31,6 +31,8 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.nfc.NfcAdapter;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -39,7 +41,10 @@ import android.os.UserManager;
 import android.support.v14.preference.PreferenceFragment;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceManager;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.Menu;
@@ -647,6 +652,13 @@ public class SettingsActivity extends SettingsDrawerActivity
         if (mActionBar != null) {
             mActionBar.setDisplayHomeAsUpEnabled(mDisplayHomeAsUpEnabled);
             mActionBar.setHomeButtonEnabled(mDisplayHomeAsUpEnabled);
+
+            // Ndroid
+            mActionBar.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+            Spannable text = new SpannableString(mActionBar.getTitle());
+            text.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.divider)),
+                    0, text.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+            mActionBar.setTitle(text);
         }
         mSwitchBar = (SwitchBar) findViewById(R.id.switch_bar);
         if (mSwitchBar != null) {
